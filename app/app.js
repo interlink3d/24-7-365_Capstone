@@ -1,8 +1,14 @@
 "use strict";
 
-var app = angular.module("247365", ["ngRoute"]);
+var app = angular.module("myApp", ["ngRoute", "uiGmapgoogle-maps"]);
 
-console.log("hello NSS!");
-
+app.config(function($routeProvider){
+  $routeProvider.
+    when('/', {
+      templateUrl: 'partials/mapDisplay.html',
+      controller: 'mapCtrl'
+    }).
+    otherwise('/');
+});
 
 

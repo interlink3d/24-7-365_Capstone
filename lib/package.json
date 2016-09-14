@@ -22,6 +22,7 @@
   "devDependencies": {
     "angular": "^1.5.8",
     "angular-filter": "^0.5.11",
+    "angular-google-maps": "^2.3.4",
     "angular-route": "^1.5.8",
     "angularfire": "^2.0.2",
     "firebase": "^3.3.2",
