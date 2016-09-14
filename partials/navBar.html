@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="navbar">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a></li>
+        <li style="text-align: left" ng-show="$parent.isLoggedIn">24/7/365</li>
+        <li style="text-align: left" ng-show="!$parent.isLoggedIn"><a ng-href="#/login">Login</a></li>
+        <li style="text-align: right" ng-show="!$parent.isLoggedIn"><a ng-href="#/home">Quick Search</a></li>
+        <li style="text-align: center" ng-show="$parent.isLoggedIn"><button class="btn" ng-click="logout()">Logout</button></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</div>

@@ -10,9 +10,15 @@
 </head>
 <body ng-app="myApp">
 
-  <header id="capHeader"> Hello NSS!!</header><!-- /header -->
-
-  <div ng-view></div><!-- google map display div -->
+  <div ng-controller="TopCtrl">
+    <div ng-include="'partials/navBar.html'"></div>
+      <div class="container">
+        <div ng-view ></div>
+          <div class="container">
+                <!-- additional content outside of map -->
+          </div>
+      </div>
+  </div>
 
 
 <!-- google maps lib -->
@@ -30,9 +36,14 @@
 <!-- app files -->
 <script src="app/app.js" type="text/javascript"></script>
 <!-- providors -->
+<script src="app/values/fb-creds.js" type="text/javascript"></script>
+<script src="app/factories/AuthFactory.js" type="text/javascript"></script>
 <!-- controllers -->
-<script src="app/controllers/mapCtrl.js" type="text/javascript"></script>
-
+<script src="app/controllers/WelcomeCtrl.js" type="text/javascript"></script>
+<script src="app/controllers/LoginCtrl.js" type="text/javascript"></script>
+<script src="app/controllers/HomeCtrl.js" type="text/javascript"></script>
+<script src="app/controllers/TopCtrl.js" type="text/javascript"></script>
+<script src="app/controllers/NavCtrl.js" type="text/javascript"></script>
 
 </body>
 </html>
