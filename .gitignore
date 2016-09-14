@@ -1,3 +1,6 @@
 lib/node_modules
 lib/.sass-cache
-app/values/fb-dreds.js
+app/values
+app/values/fb-creds.js
+app/values/gm-creds.js
+
