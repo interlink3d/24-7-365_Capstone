@@ -30,8 +30,7 @@ app.config(function($routeProvider){
     when('/home', {
       templateUrl: 'partials/mapDisplay.html',
       controller: 'TopCtrl'
-    }).
-    otherwise('/login');
+    });
 });
 
 app.run( ($location, FBCreds) => {
