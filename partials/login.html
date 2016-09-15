@@ -1,22 +1,20 @@
-<div class="container">
-
-  <div class="row">
-    <div ng-include="'partials/navBar.html'"></div>
-
-    <section class="auth-form row">
+<div class="container teal lighten-3">
+  <!-- <div class="row"> -->
+    <section>
       <div class="col s12">
         <h2 class="logTitle center">Welcome to 24/7/365!</h2>
       </div>
-      <div class="col s12 iW2">
+      <div class="col s12">
         <h3 class="center">I want to...</h3>
 
      <!--      <div class="row"> -->
-            <a ng-href="#/home" class="waves-effect waves-light btn"><i class="material-icons right">search</i>Search</a>
+            <a ng-href="#/welcome" class="waves-effect waves-light btn"><i class="material-icons right">search</i>Search</a>
             <a ng-click="login()" class="waves-effect waves-light btn"><i class="material-icons right">input</i>Login</a>
             <a ng-click="register()" class="waves-effect waves-light btn"><i class="material-icons right">perm_identity</i>Register</a>
           <!-- </div> -->
       </div>
-      <div>
+    <section class="container">
+      <div >
         <input class="field4" type="text" placeholder="Username:" ng-model="newUser.userName">
       </div>
       <div>
@@ -25,10 +23,11 @@
       <div>
         <input class="field4" type="password" placeholder="Password:" ng-model="account.password">
       </div>
-      <section>
-        <p class="center"><a ng-href="#/welcome">Contact Us</a></p>
-        <p class="center"><a ng-href="#/welcome">About Us</a></p>
-      </section>
     </section>
-  </div>
+    <section>
+      <p class="center"><a ng-href="#/welcome">Contact Us</a></p>
+      <p class="center"><a ng-href="#/welcome">About Us</a></p>
+    </section>
+    </section>
+  <!-- </div> -->
 </div>

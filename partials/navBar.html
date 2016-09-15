@@ -1,12 +1,11 @@
-<div class="container topBar">
-  <div class="navbar">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a></li>
-        <li style="text-align: right" ng-show="!$parent.isLoggedIn"><a ng-href="#/home">Login</a></li>
-        <li style="text-align: right" ng-show="$parent.isLoggedIn"><a ng-href="#/">Quick Search</a></li>
-        <li style="text-align: right" ng-show="$parent.isLoggedIn"><a ng-click="logout()">Logout</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
+<nav>
+  <div class="nav-wrapper teal lighten-3">
+    <a class="brand-logo right">Logo</a>
+    <ul id="nav-mobile" class="left">
+      <li><a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a></li>
+      <li><a ng-href="#/welcome">Search</a></li>
+      <li ng-show="$parent.isLoggedIn"><a ng-href="#/profile">My Places</a></li>
+      <li ng-show="$parent.isLoggedIn"><a ng-click="logout()">Logout</a></li>
+    </ul>
   </div>
-</div>
+</nav>
