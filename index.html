@@ -10,14 +10,8 @@
 </head>
 <body ng-app="myApp">
 
-  <div ng-controller="TopCtrl">
-    <div ng-include="'partials/navBar.html'"></div>
-      <div class="container">
-        <div ng-view ></div>
-          <div class="container">
-                <!-- additional content outside of map -->
-          </div>
-      </div>
+  <div ng-controller="TopCtrl" class="container">
+    <div ng-view></div>
   </div>
 
 

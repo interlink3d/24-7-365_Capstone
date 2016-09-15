@@ -4,6 +4,14 @@ var app = angular.module("myApp", ["ngRoute", "uiGmapgoogle-maps"])
 .constant('FBURL', "https://project-8304237271425023795.firebaseio.com/");
 // .constant('GMURL', value);
 
+app.config(function(uiGmapGoogleMapApiProvider, GMCreds) {
+      let gCreds = GMCreds;
+      uiGmapGoogleMapApiProvider.configure({
+        key: 'gCreds.key',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'places',  // Required for SearchBox.
+    });
+});
 
 let isAuth = (AuthFactory) => new Promise( (resolve, reject) => {
   if(AuthFactory.isAuthenticated()) {
@@ -15,7 +23,7 @@ let isAuth = (AuthFactory) => new Promise( (resolve, reject) => {
 
 app.config(function($routeProvider){
   $routeProvider.
-    when('#/', {
+    when('/', {
       templateUrl: 'partials/welcomePage.html',
       controller: 'WelcomeCtrl'
     }).

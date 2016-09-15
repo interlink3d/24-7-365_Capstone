@@ -6,6 +6,11 @@ app.controller("LoginCtrl", function($scope, $window, AuthFactory) {
     password: ""
   };
 
+  $scope.newUser = {
+    userName : "",
+    uid: $scope.$parent.getUser()
+  };
+
   $scope.register = () => {
     console.log("you clicked register");
     AuthFactory.createUser({
@@ -27,7 +32,7 @@ app.controller("LoginCtrl", function($scope, $window, AuthFactory) {
       if (data) {
         $window.location.href = "#/home";
       } else {
-        $window.location.href = "#/login";
+        $window.location.href = "#/home";
       }
       console.log("data from login", data);
     }, (error) => {

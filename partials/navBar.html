@@ -4,8 +4,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a></li>
         <li style="text-align: right" ng-show="!$parent.isLoggedIn"><a ng-href="#/home">Login</a></li>
-        <li style="text-align: right" ng-show="!$parent.isLoggedIn"><a ng-href="#/welcome">Quick Search</a></li>
-        <li style="text-align: center" ng-show="$parent.isLoggedIn"><a ng-click="logout()">Logout</a></li>
+        <li style="text-align: right" ng-show="$parent.isLoggedIn"><a ng-href="#/">Quick Search</a></li>
+        <li style="text-align: right" ng-show="$parent.isLoggedIn"><a ng-click="logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>
