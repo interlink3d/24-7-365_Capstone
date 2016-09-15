@@ -5,7 +5,7 @@ app.controller('TopCtrl', function($scope, $location, $window, AuthFactory) {
 
   let currentUser = null;
 
-  $scope.map = { center: { latitude: 36.16, longitude: -86.78 }, zoom: 10 };
+  $scope.map = { center: { latitude: 36.16, longitude: -86.78 }, zoom: 12 };
 
 
   firebase.auth().onAuthStateChanged(function(user) {

@@ -1,5 +1,8 @@
 <div class="container">
-  <div >
-    <ui-gmap-google-map class="angular-google-map-container" center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+  <div ng-include="'partials/navBar.html'"></div>
+  <div class="row">
+    <div class="col s12 angular-google-map-container">
+      <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+    </div>
   </div>
 </div>
