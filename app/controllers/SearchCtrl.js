@@ -1,11 +1,10 @@
 "use strict";
 
-app.controller('SearchCtrl', function($scope, $location, $window, MapCalls) {
+app.controller('SearchCtrl', function($scope, $location, MapCalls) {
 
   $scope.newSearch = {
     category: "",
-    location: "",
-    uid: $scope.$parent.getUser()
+    location: ""
   };
 
   $scope.newCatSearch = function() {

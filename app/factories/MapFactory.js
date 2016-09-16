@@ -1,13 +1,16 @@
 "use strict";
 
-app.factory("MapCalls", ($q, $http, GMURL, GMCreds) => {
+app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
 
   let gCreds = GMCreds;
+  let searchURL = "";
+  let searchObject;
 
   let getSearchObject = (newSearch) => {
+    searchURL = `${GMURL}/search?q=${newSearch.category}&key=${gCreds.key}`;
     console.log("call started", newSearch);
     return $q( (resolve, reject) => {
-      $http.get(`${GMURL}/search?key=${gCreds.key}&q=${newSearch}`)
+      $http.get(searchURL)
       .success( (searchObject) => {
         resolve(searchObject);
       })
@@ -17,6 +20,9 @@ app.factory("MapCalls", ($q, $http, GMURL, GMCreds) => {
     });
   };
 
+  let getUrl = () => {
+    return searchURL;
+  };
 
-  return {getSearchObject};
+  return {getSearchObject, getUrl};
 });
