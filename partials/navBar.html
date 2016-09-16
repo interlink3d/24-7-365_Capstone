@@ -3,7 +3,7 @@
     <a class="brand-logo right">Logo</a>
     <ul id="nav-mobile" class="left">
       <li><a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a></li>
-      <li><a ng-href="#/welcome">Search</a></li>
+      <li><a ng-href="#/search">Search</a></li>
       <li ng-show="$parent.isLoggedIn"><a ng-href="#/profile">My Places</a></li>
       <li ng-show="$parent.isLoggedIn"><a ng-click="logout()">Logout</a></li>
     </ul>
