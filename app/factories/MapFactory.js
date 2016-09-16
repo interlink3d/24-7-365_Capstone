@@ -7,13 +7,13 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
   let searchObject;
 
   let getSearchObject = (newSearch) => {
-    searchURL = `${GMURL}/search?opennow:true&q=${newSearch.category}&key=${gCreds.key}`;
+    searchURL = `${GMURL}/search?q=${newSearch.category}&key=${gCreds.key}`;
     console.log("call started", newSearch);
     return $q( (resolve, reject) => {
       $http.get(searchURL)
       .success( (searchObject) => {
         resolve(searchObject);
-        console.log(searchObject);
+        // console.log(searchObject);
       })
       .error( (error) => {
         reject(error);

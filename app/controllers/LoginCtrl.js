@@ -30,9 +30,9 @@ app.controller("LoginCtrl", function($scope, $window, AuthFactory) {
     AuthFactory.loginUser($scope.account)
     .then( (data) => {
       if (data) {
-        $window.location.href = "#/home";
+        $window.location.href = "#/search";
       } else {
-        $window.location.href = "#/home";
+        $window.location.href = "#/search";
       }
       console.log("data from login", data);
     }, (error) => {
