@@ -4,20 +4,24 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
 
   let gooCreds = GMCreds;
   let searchURL = "";
-  let searchObject;
+  let mySearchResults;
 
   let getSearchObject = (newSearch) => {
-    searchURL = `${GMURL}/search?q=${newSearch.category}&key=${gooCreds.key}`;
+    searchURL = `${GMURL}36.1627,-86.7816&radius=500&openNow:true&keyword=${newSearch.category}&key=${gooCreds.key}`;
     console.log("call started", newSearch);
     return $q( (resolve, reject) => {
       $http.get(searchURL)
       .success( (searchObject) => {
         resolve(searchObject);
-        // console.log(searchObject);
+        console.log(searchObject);
       })
       .error( (error) => {
         reject(error);
       });
+    })
+    .then( (searchObject) => {
+    mySearchResults = searchObject;
+    console.log("promise to return object", mySearchResults);
     });
   };
 
@@ -25,5 +29,9 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
     return searchURL;
   };
 
-  return {getSearchObject, getUrl};
+  let getResults = () => {
+    return mySearchResults;
+  };
+
+  return {getSearchObject, getUrl, getResults};
 });

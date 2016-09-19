@@ -2,7 +2,7 @@
 
 var app = angular.module("myApp", ["ngRoute", "uiGmapgoogle-maps"])
 .constant('FBURL', "https://project-8304237271425023795.firebaseio.com/")
-.constant('GMURL', "https://www.google.com/maps/embed/v1");
+.constant('GMURL', "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
 
 app.config(function(uiGmapGoogleMapApiProvider, GMCreds) {
       let gCreds = GMCreds;
