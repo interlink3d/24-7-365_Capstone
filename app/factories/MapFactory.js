@@ -2,12 +2,12 @@
 
 app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
 
-  let gCreds = GMCreds;
+  let gooCreds = GMCreds;
   let searchURL = "";
   let searchObject;
 
   let getSearchObject = (newSearch) => {
-    searchURL = `${GMURL}/search?q=${newSearch.category}&key=${gCreds.key}`;
+    searchURL = `${GMURL}/search?q=${newSearch.category}&key=${gooCreds.key}`;
     console.log("call started", newSearch);
     return $q( (resolve, reject) => {
       $http.get(searchURL)

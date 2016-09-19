@@ -1,9 +1,17 @@
 "use strict";
 
-var app = angular.module("myApp", ["ngRoute"])
+var app = angular.module("myApp", ["ngRoute", "uiGmapgoogle-maps"])
 .constant('FBURL', "https://project-8304237271425023795.firebaseio.com/")
 .constant('GMURL', "https://www.google.com/maps/embed/v1");
 
+app.config(function(uiGmapGoogleMapApiProvider, GMCreds) {
+      let gCreds = GMCreds;
+      uiGmapGoogleMapApiProvider.configure({
+        key: 'gCreds.key',
+        v: '3.20',
+        libraries: 'places',
+    });
+});
 
 let isAuth = (AuthFactory) => new Promise( (resolve, reject) => {
   if(AuthFactory.isAuthenticated()) {

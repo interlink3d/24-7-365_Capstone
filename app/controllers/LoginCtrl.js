@@ -3,13 +3,15 @@
 app.controller("LoginCtrl", function($scope, $window, AuthFactory) {
   $scope.account = {
     email: "",
-    password: ""
-  };
-
-  $scope.newUser = {
-    userName : "",
+    password: "",
+    userName: "",
     uid: $scope.$parent.getUser()
   };
+
+  // $scope.newUser = {
+  //   userName : "",
+  //   uid: $scope.$parent.getUser()
+  // };
 
   $scope.register = () => {
     console.log("you clicked register");
@@ -19,6 +21,7 @@ app.controller("LoginCtrl", function($scope, $window, AuthFactory) {
     })
     .then( (userData) => {
       console.log("newUser", userData);
+      console.log("new account", $scope.account);
       $scope.login();
     }, (error) => {
       console.log(`Error creating user: ${error}`);
@@ -35,6 +38,7 @@ app.controller("LoginCtrl", function($scope, $window, AuthFactory) {
         $window.location.href = "#/search";
       }
       console.log("data from login", data);
+      console.log("new account", $scope.account);
     }, (error) => {
       console.log("error loggin in", error);
     });
