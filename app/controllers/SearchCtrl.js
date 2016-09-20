@@ -9,9 +9,12 @@ app.controller('SearchCtrl', function($scope, $location, MapCalls) {
 
   $scope.newCatSearch = function() {
     console.log("clicked new search");
-    MapCalls.getSearchObject($scope.newSearch)
-    .then(function() {
-      $location.url("/home"); // rerouting back to list view after promise is returned
+    MapCalls.convertLocation($scope.newSearch)
+    .then( (response) => {
+      MapCalls.getSearchObject($scope.newSearch, response)
+      .then(function() {
+        $location.url("/home"); // rerouting back to list view after promise is returned
+      });
     });
   };
 

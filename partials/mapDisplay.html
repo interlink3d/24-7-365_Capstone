@@ -8,19 +8,26 @@
     <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'></ui-gmap-google-map>
   </div>
   <div class="row">   </div>
-  <div class="row">
-      <div class="col s5">Name</div>
-      <div class="col s1">Rating</div>
-      <div class="col s5">Address</div>
-  </div>
-
-  <div class="listResults" ng-repeat="results in searchArray">
-      <div class="col s5 result">{{results.name}}</div>
-      <div class="col s1 result">{{results.rating}}</div>
-      <div class="col s5 result">{{results.vicinity}}</div>
-      <div class="col s1 result"><button class="btn btn-danger" ng-click="">X</button></div>
-
-  </div>
+  <div class="listResults row" ng-repeat="results in searchArray">
+     <div class="row">
+        <div class="col s12">
+          <div class="small card">
+            <div class="small card-image responsive-img">
+              <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/768-200.png" class="responsive-img">
+              <span class="card-title bold h4 teal-text text-darken-2 center">{{results.name}} - {{results.rating}}</span>
+            </div>
+            <div class="card-content center">
+              <h6 class="col s10 valign-wrapper">{{results.vicinity}}</h6>
+            </div>
+            <div class="card-action">
+              <a ng-click="newCatSearch()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">queue</i></a>
+              <a ng-click="newCatSearch()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">mode_edit</i></a>
+              <a ng-click="newCatSearch()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">my_location</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div> <!-- end ng repeat div -->
 </div>
 
 

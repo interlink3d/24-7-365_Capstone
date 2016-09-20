@@ -4,33 +4,17 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, MapCalls){
 
   // $scope.trustAsResourceUrl = $sce.trustAsResourceUrl;
 
-  $scope.map = {
-    center: { latitude: 36.16, longitude: -86.78 },
-    zoom: 15 };
-
-  $scope.options = {scrollwheel: false};
-
   $scope.mySearchUrl = MapCalls.getUrl();
   $scope.resultsObject = MapCalls.getResults();
   $scope.searchArray = $scope.resultsObject.results;
   console.log("search array", $scope.searchArray);
+  $scope.lat = MapCalls.getLat();
+  $scope.lng = MapCalls.getLng();
 
-  // console.log("search results data in MapCtrl", $scope.resultsObject);
-  // console.log("index 0 of results", $scope.resultsObject.results[0]);
-  // console.log("results[0].name", $scope.resultsObject.results[0].name);
+  $scope.map = {
+    center: { latitude: $scope.lat, longitude: $scope.lng },
+    zoom: 15 };
 
-  // function flattenData (data) {
-  //   console.log("data", data);
-  //   $scope.dataDisplay = [];
-  //   data.forEach(function (array) {
-  //     for (var singleObject in array) {
-  //      $scope.dataDisplay.push(array[singleObject]);
-  //     }
-  //     console.log("datadisplay", $scope.dataDisplay);
-  //   });
-  // }
-
-  // flattenData($scope.resultsObject.results);
-
+  $scope.options = {scrollwheel: true};
 
 });
