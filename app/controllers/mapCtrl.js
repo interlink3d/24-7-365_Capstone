@@ -11,9 +11,12 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, MapCalls){
   $scope.options = {scrollwheel: false};
 
   $scope.mySearchUrl = MapCalls.getUrl();
-  $scope.thirdTry = MapCalls.getResults();
+  $scope.resultsObject = MapCalls.getResults();
 
-  console.log("search results data in MapCtrl", $scope.thirdTry);
+  console.log("search results data in MapCtrl", $scope.resultsObject);
+  console.log("index 0 of results", $scope.resultsObject.results[0]);
+  console.log("results[0].name", $scope.resultsObject.results[0].name);
+
 
   function flattenData (data) {
     console.log("data", data);
@@ -22,10 +25,11 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, MapCalls){
       for (var singleObject in array) {
        $scope.dataDisplay.push(array[singleObject]);
       }
+      console.log("datadisplay", $scope.dataDisplay);
     });
   }
 
-  flattenData($scope.thirdTry);
+  flattenData($scope.resultsObject.results);
 
 
 });

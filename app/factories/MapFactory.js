@@ -21,7 +21,7 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
     })
     .then( (searchObject) => {
     mySearchResults = searchObject;
-    console.log("promise to return object", mySearchResults);
+    console.log("promise to return object indexed 1", mySearchResults);
     });
   };
 
