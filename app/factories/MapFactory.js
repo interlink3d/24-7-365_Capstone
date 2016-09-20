@@ -13,7 +13,7 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
       $http.get(searchURL)
       .success( (searchObject) => {
         resolve(searchObject);
-        console.log(searchObject);
+        // console.log(searchObject);
       })
       .error( (error) => {
         reject(error);
@@ -21,7 +21,7 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
     })
     .then( (searchObject) => {
     mySearchResults = searchObject;
-    console.log("promise to return object indexed 1", mySearchResults);
+    // console.log("promise to return object indexed 1", mySearchResults);
     });
   };
 

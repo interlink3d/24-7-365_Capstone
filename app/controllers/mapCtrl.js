@@ -12,24 +12,25 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, MapCalls){
 
   $scope.mySearchUrl = MapCalls.getUrl();
   $scope.resultsObject = MapCalls.getResults();
+  $scope.searchArray = $scope.resultsObject.results;
+  console.log("search array", $scope.searchArray);
 
-  console.log("search results data in MapCtrl", $scope.resultsObject);
-  console.log("index 0 of results", $scope.resultsObject.results[0]);
-  console.log("results[0].name", $scope.resultsObject.results[0].name);
+  // console.log("search results data in MapCtrl", $scope.resultsObject);
+  // console.log("index 0 of results", $scope.resultsObject.results[0]);
+  // console.log("results[0].name", $scope.resultsObject.results[0].name);
 
+  // function flattenData (data) {
+  //   console.log("data", data);
+  //   $scope.dataDisplay = [];
+  //   data.forEach(function (array) {
+  //     for (var singleObject in array) {
+  //      $scope.dataDisplay.push(array[singleObject]);
+  //     }
+  //     console.log("datadisplay", $scope.dataDisplay);
+  //   });
+  // }
 
-  function flattenData (data) {
-    console.log("data", data);
-    $scope.dataDisplay = [];
-    data.forEach(function (array) {
-      for (var singleObject in array) {
-       $scope.dataDisplay.push(array[singleObject]);
-      }
-      console.log("datadisplay", $scope.dataDisplay);
-    });
-  }
-
-  flattenData($scope.resultsObject.results);
+  // flattenData($scope.resultsObject.results);
 
 
 });

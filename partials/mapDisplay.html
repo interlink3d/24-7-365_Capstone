@@ -1,16 +1,24 @@
 <div ng-include="'partials/navBar.html'"></div>
 <div class="row">
-  <div class="col s12 introMessage">This is going to be a intro message</div>
+  <br>
+  <div class="col s12 introMessage">This is going to be an intro message</div>
+  <br>
+  <br>
   <div class="col s12 angular-google-map-container">
     <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'></ui-gmap-google-map>
   </div>
-  <div class="col s12 listResults" ng-repeat="results in dataDisplay">
-    <p>this is where the list results will populate</p>
-      <div class="col s2"><input type="checkbox" name=""/></div>
-      <div class="col s6">{{results.name}}</div>
-      <div class="col s2">{{results.rating}}</div>
-      <div class="col s1">{{results.vicinity}}</div>
-      <div class="col s1"><button class="btn btn-danger" ng-click="itemDelete(item.id)">X</button></div>
+  <div class="row">   </div>
+  <div class="row">
+      <div class="col s5">Name</div>
+      <div class="col s1">Rating</div>
+      <div class="col s5">Address</div>
+  </div>
+
+  <div class="listResults" ng-repeat="results in searchArray">
+      <div class="col s5 result">{{results.name}}</div>
+      <div class="col s1 result">{{results.rating}}</div>
+      <div class="col s5 result">{{results.vicinity}}</div>
+      <div class="col s1 result"><button class="btn btn-danger" ng-click="">X</button></div>
 
   </div>
 </div>
