@@ -1,7 +1,9 @@
 <div ng-include="'partials/navBar.html'"></div>
 <div class="row">
   <br>
-  <div class="col s12 introMessage">This is going to be an intro message</div>
+  <div class="col s12 introMessage">
+    <p class="h6">This is going to be an intro message</p>
+  </div>
   <br>
   <br>
   <div class="col s12 angular-google-map-container">
@@ -13,8 +15,8 @@
         <div class="col s12">
           <div class="small card">
             <div class="small card-image responsive-img">
-              <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/768-200.png" class="responsive-img">
-              <span class="card-title bold h4 teal-text text-darken-2 center">{{results.name}} - {{results.rating}}</span>
+              <img src="http://i.stack.imgur.com/58Fp8.png" class="responsive-img">
+              <span class="card-title bold h5 teal-text text-darken-2 center">{{results.name}} - {{results.rating}}<i class="material-icons right">star</i></span>
             </div>
             <div class="card-content center">
               <h6 class="col s10 valign-wrapper">{{results.vicinity}}</h6>
@@ -28,6 +30,9 @@
         </div>
       </div>
   </div> <!-- end ng repeat div -->
+  <div class="row">
+    <a ng-click="nextResults()" class="waves-effect waves-light btn center col s6 push-s3">VIEW MORE RESULTS</a>
+  </div>
 </div>
 
 

@@ -4,10 +4,9 @@
 app.controller("NavCtrl", function($scope, $location){
     $scope.navItems = [
         {url: "#/login", name: "Login", showState: "!$parent.isLoggedIn"},
-        {url: "#/home", name: "Home", showState: "!$parent.isLoggedIn"}
-        // {url: "#/", name: "24/7/365", showState: "$parent.isLoggedIn"},
-        // {url: "#/home", name: "Quick Search", showState: "!$parent.isLoggedIn"}
-        // {url: "#/items/new", name: "New Items", showState: "$parent.isLoggedIn"}
+        {url: "#/home", name: "Home", showState: "!$parent.isLoggedIn"},
+        {url: "#/contact", name: "contact", showState: "!$parent.isLoggedIn"}
+        // {url: "#/", name: "24/7/365", showState: "$parent.isLoggedIn"}
     ];
 
     $scope.isActive = (viewLocation) => viewLocation === $location.path();

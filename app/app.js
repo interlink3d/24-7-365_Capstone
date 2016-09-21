@@ -2,7 +2,7 @@
 
 var app = angular.module("myApp", ["ngRoute", "uiGmapgoogle-maps"])
 .constant('FBURL', "https://project-8304237271425023795.firebaseio.com/")
-.constant('GMURL', "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
+.constant('GMURL', "https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
 
 app.config(function(uiGmapGoogleMapApiProvider, GMCreds) {
       let gCreds = GMCreds;
@@ -31,13 +31,17 @@ app.config(function($routeProvider){
       templateUrl: 'partials/login.html',
       controller: 'LoginCtrl'
     }).
+    when('/search', {
+      templateUrl: 'partials/searchForm.html',
+      controller: 'SearchCtrl'
+    }).
     when('/home', {
       templateUrl: 'partials/mapDisplay.html',
       controller: 'mapCtrl'
     }).
-    when('/search', {
-      templateUrl: 'partials/searchForm.html',
-      controller: 'SearchCtrl'
+    when('/home/moreresults', {
+      templateUrl: 'partials/mapDisplay.html',
+      controller: 'mapCtrl'
     }).
     when('/contact', {
       templateUrl: 'partials/contactPage.html',

@@ -9,6 +9,7 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
   let mySearchLocation;
   let searchLocationLat;
   let searchLocationLng;
+  let moreResultsURL = "";
 
   let convertLocation = (newSearch) => {
     searchLocation = `https://maps.googleapis.com/maps/api/geocode/json?address=${newSearch.location}&key=${gooCreds.key}`;
@@ -33,7 +34,7 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
   };
 
   let getSearchObject = (newSearch, locationObject) => {
-    searchURL = `${GMURL}${searchLocationLat},${searchLocationLng}&openNow=true&rankBy=distance&keyword=${newSearch.category}&key=${gooCreds.key}`;
+    searchURL = `${GMURL}location=${searchLocationLat},${searchLocationLng}&openNow=true&rankBy=distance&keyword=${newSearch.category}&key=${gooCreds.key}`;
     console.log("call started", newSearch);
     console.log("call started", searchURL);
     return $q( (resolve, reject) => {
@@ -48,9 +49,30 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
     })
     .then( (searchObject) => {
     mySearchResults = searchObject;
-    // console.log("promise to return object indexed 1", mySearchResults);
+    // console.log("promise to return object", mySearchResults);
     });
   };
+
+  let moreResults = (resultsObject) => {
+    moreResultsURL = `${GMURL}pagetoken=${resultsObject.next_page_token}&key=${gooCreds.key}`;
+    console.log("second results call started", resultsObject);
+    console.log("more results call started", moreResultsURL);
+    return $q( (resolve, reject) => {
+      $http.get(moreResultsURL)
+      .success( (searchObject) => {
+        resolve(searchObject);
+        // console.log(searchObject);
+      })
+      .error( (error) => {
+        reject(error);
+      });
+    })
+    .then( (searchObject) => {
+    mySearchResults = searchObject;
+    console.log("promise to return more results object", mySearchResults);
+    });
+  };
+
 
   let getUrl = () => {
     return searchURL;
@@ -68,5 +90,5 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
     return searchLocationLng;
   };
 
-  return {convertLocation, getSearchObject, getUrl, getResults, getLat, getLng,};
+  return {convertLocation, getSearchObject, moreResults, getUrl, getResults, getLat, getLng,};
 });
