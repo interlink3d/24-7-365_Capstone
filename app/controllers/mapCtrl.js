@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("mapCtrl", function($scope, $location, $window, $sce, MapCalls){
+app.controller("mapCtrl", function($scope, $location, $window, $sce, $route, MapCalls){
 
   // $scope.trustAsResourceUrl = $sce.trustAsResourceUrl;
 
@@ -20,9 +20,26 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, MapCalls){
   $scope.nextResults = function() {
     console.log("clicked more results");
     MapCalls.moreResults($scope.resultsObject)
-      .then(function() {
-        $location.url("/home/moreresults");
-    });
+      .then($route.reload());
   };
+
+  $scope.saveLocation = function(results) {
+    console.log("results object", results);
+      $scope.locationObject = {
+        name: results.name,
+        rating: results.rating,
+        vicinity: results.vicinity,
+        placeID: results.place_id,
+        pid: results.id,
+        latCoord: results.geometry.location.lat,
+        lngCoord: results.geometry.location.lng,
+        review: "",
+        uid: $scope.$parent.getUser()
+      };
+    MapCalls.postNewLocation($scope.locationObject);
+    console.log("locationObject", $scope.locationObject);
+  };
+
+
 
 });

@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
+app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
 
   let gooCreds = GMCreds;
   let searchURL = "";
@@ -13,12 +13,12 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
 
   let convertLocation = (newSearch) => {
     searchLocation = `https://maps.googleapis.com/maps/api/geocode/json?address=${newSearch.location}&key=${gooCreds.key}`;
-      console.log("location convert", searchLocation);
+      // console.log("location convert", searchLocation);
     return $q( (resolve, reject) => {
       $http.get(searchLocation)
       .success( (locationObject) => {
         resolve(locationObject);
-        console.log(locationObject);
+        // console.log(locationObject);
       })
       .error( (error) => {
         reject(error);
@@ -35,8 +35,8 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
 
   let getSearchObject = (newSearch, locationObject) => {
     searchURL = `${GMURL}location=${searchLocationLat},${searchLocationLng}&openNow=true&rankBy=distance&keyword=${newSearch.category}&key=${gooCreds.key}`;
-    console.log("call started", newSearch);
-    console.log("call started", searchURL);
+    // console.log("call started", newSearch);
+    // console.log("call started", searchURL);
     return $q( (resolve, reject) => {
       $http.get(searchURL)
       .success( (searchObject) => {
@@ -55,8 +55,8 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
 
   let moreResults = (resultsObject) => {
     moreResultsURL = `${GMURL}pagetoken=${resultsObject.next_page_token}&key=${gooCreds.key}`;
-    console.log("second results call started", resultsObject);
-    console.log("more results call started", moreResultsURL);
+    // console.log("second results call started", resultsObject);
+    // console.log("more results call started", moreResultsURL);
     return $q( (resolve, reject) => {
       $http.get(moreResultsURL)
       .success( (searchObject) => {
@@ -73,6 +73,18 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
     });
   };
 
+  let postNewLocation = (results) => {
+    console.log("results in PNL func", results);
+    return $q( (resolve, reject) => {
+      $http.post(`${FBURL}locations.json`, angular.toJson(results))
+      .success( (ObjFromFirebase) => {
+        resolve(ObjFromFirebase);
+      })
+      .error( (error) => {
+        reject(error);
+      });
+    });
+  };
 
   let getUrl = () => {
     return searchURL;
@@ -90,5 +102,5 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL) => {
     return searchLocationLng;
   };
 
-  return {convertLocation, getSearchObject, moreResults, getUrl, getResults, getLat, getLng,};
+  return {convertLocation, getSearchObject, moreResults, postNewLocation, getUrl, getResults, getLat, getLng,};
 });

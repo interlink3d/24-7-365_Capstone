@@ -10,4 +10,7 @@ app.controller("NavCtrl", function($scope, $location){
     ];
 
     $scope.isActive = (viewLocation) => viewLocation === $location.path();
+
+
+
 });
