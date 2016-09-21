@@ -7,7 +7,7 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, $route, Map
   $scope.mySearchUrl = MapCalls.getUrl();
   $scope.resultsObject = MapCalls.getResults();
   $scope.searchArray = $scope.resultsObject.results;
-  console.log("results object", $scope.resultsObject);
+  // console.log("results object", $scope.resultsObject);
   $scope.lat = MapCalls.getLat();
   $scope.lng = MapCalls.getLng();
 
@@ -20,12 +20,14 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, $route, Map
   $scope.nextResults = function() {
     console.log("clicked more results");
     MapCalls.moreResults($scope.resultsObject)
-      .then($route.reload());
+      .then(function() {
+        $route.reload();
+    });
   };
 
   $scope.saveLocation = function(results) {
     console.log("results object", results);
-      $scope.locationObject = {
+      $scope.locObject = {
         name: results.name,
         rating: results.rating,
         vicinity: results.vicinity,
@@ -36,10 +38,8 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, $route, Map
         review: "",
         uid: $scope.$parent.getUser()
       };
-    MapCalls.postNewLocation($scope.locationObject);
-    console.log("locationObject", $scope.locationObject);
+    MapCalls.postNewLocation($scope.locObject);
+    // console.log("locObject in SL", $scope.locObject);
   };
-
-
 
 });

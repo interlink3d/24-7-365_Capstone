@@ -5,9 +5,6 @@ app.controller('TopCtrl', function($scope, $location, $window, AuthFactory) {
 
   let currentUser = null;
 
-
-
-
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       currentUser = user.uid;  // ability to edit and pull UID while logged in

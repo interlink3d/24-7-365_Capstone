@@ -10,6 +10,7 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
   let searchLocationLat;
   let searchLocationLng;
   let moreResultsURL = "";
+  let locations;
 
   let convertLocation = (newSearch) => {
     searchLocation = `https://maps.googleapis.com/maps/api/geocode/json?address=${newSearch.location}&key=${gooCreds.key}`;
@@ -73,14 +74,37 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     });
   };
 
-  let postNewLocation = (results) => {
-    console.log("results in PNL func", results);
+  let postNewLocation = (locObject) => {
+    console.log("locObject in PNL func", locObject);
     return $q( (resolve, reject) => {
-      $http.post(`${FBURL}locations.json`, angular.toJson(results))
+      $http.post(`${FBURL}locations.json`, angular.toJson(locObject))
       .success( (ObjFromFirebase) => {
         resolve(ObjFromFirebase);
       })
       .error( (error) => {
+        reject(error);
+      });
+    });
+  };
+
+  let getMyLocations = (user) => {
+    console.log("fired get loc call", user);
+    locations = [];
+    return $q((resolve, reject) => {
+      $http.get(`${FBURL}locations.json?orderBy="uid"&equalTo="${user}"`)
+      .success((itemObject) => {
+        if (itemObject !== null){
+          Object.keys(itemObject).forEach((key)=>{
+            itemObject[key].id = key;
+            locations.push(itemObject[key]);
+          });
+          resolve(locations);
+          console.log("locations array", locations);
+        } else {
+          resolve(locations);
+        }
+      })
+      .error((error)=>{
         reject(error);
       });
     });
@@ -102,5 +126,9 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     return searchLocationLng;
   };
 
-  return {convertLocation, getSearchObject, moreResults, postNewLocation, getUrl, getResults, getLat, getLng,};
+  let getLocations = () => {
+    return  locations;
+  };
+
+  return {convertLocation, getSearchObject, moreResults, postNewLocation, getMyLocations, getUrl, getResults, getLat, getLng, getLocations};
 });
