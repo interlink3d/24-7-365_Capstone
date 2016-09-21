@@ -4,28 +4,25 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, MapCalls){
 
   // $scope.trustAsResourceUrl = $sce.trustAsResourceUrl;
 
+  $scope.mySearchUrl = MapCalls.getUrl();
+  $scope.resultsObject = MapCalls.getResults();
+  $scope.searchArray = $scope.resultsObject.results;
+  console.log("results object", $scope.resultsObject);
+  $scope.lat = MapCalls.getLat();
+  $scope.lng = MapCalls.getLng();
+
   $scope.map = {
-    center: { latitude: 36.16, longitude: -86.78 },
+    center: { latitude: $scope.lat, longitude: $scope.lng },
     zoom: 15 };
 
-  $scope.options = {scrollwheel: false};
+  $scope.options = {scrollwheel: true};
 
-  $scope.mySearchUrl = MapCalls.getUrl();
-  $scope.thirdTry = MapCalls.getResults();
-
-  console.log("search results data in MapCtrl", $scope.thirdTry);
-
-  function flattenData (data) {
-    console.log("data", data);
-    $scope.dataDisplay = [];
-    data.forEach(function (array) {
-      for (var singleObject in array) {
-       $scope.dataDisplay.push(array[singleObject]);
-      }
+  $scope.nextResults = function() {
+    console.log("clicked more results");
+    MapCalls.moreResults($scope.resultsObject)
+      .then(function() {
+        $location.url("/home/moreresults");
     });
-  }
-
-  flattenData($scope.thirdTry);
-
+  };
 
 });
