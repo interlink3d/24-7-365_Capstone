@@ -1,0 +1,20 @@
+<br>
+<br>
+<div class="row">
+  <div class="col s10 push-s1">
+    <div class="small card">
+      <div class="small card-image responsive-img">
+        <img src="http://i.stack.imgur.com/58Fp8.png" class="responsive-img">
+        <span class="card-title bold h5 teal-text text-darken-2 center">{{eloc.name}}</span>
+        <span>{{eloc.rating}}<i class="material-icons right">star</i></span>
+      </div>
+      <div class="card-content center">
+        <h6 class="col s10 valign-wrapper">{{eloc.vicinity}}</h6>
+        <input type="text" name="review" ng-model="eloc.review">
+      </div>
+      <div class="card-action">
+        <a ng-click="saveEditedLocation($routeParams.locationId)" class="waves-effect waves-light tooClose btn col s5 push-s3"><i class="material-icons center">done</i>Save</a>
+      </div>
+    </div>
+  </div>
+</div>

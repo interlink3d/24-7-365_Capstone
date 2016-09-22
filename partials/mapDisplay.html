@@ -17,17 +17,18 @@
           <div class="small card">
             <div class="small card-image responsive-img">
               <img src="http://i.stack.imgur.com/58Fp8.png" class="responsive-img">
-              <span class="card-title bold h5 teal-text text-darken-2 center">{{results.name}} - {{results.rating}}<i class="material-icons right">star</i></span>
+              <span class="card-title bold h5 teal-text text-darken-2 center">{{results.name}}</span>
+              <span>{{results.rating}}<i class="material-icons right">star</i></span>
             </div>
             <div class="card-content center">
               <h6 class="col s10 valign-wrapper">{{results.vicinity}}</h6>
             </div>
             <div class="card-action">
               <a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a>
-              <a ng-show="$parent.isLoggedIn" ng-click="saveLocation(results)" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">queue</i></a>
-              <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">mode_edit</i></a>
-              <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">my_location</i></a>
-              <a ng-show="!$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">my_location</i></a>
+              <a ng-show="$parent.isLoggedIn" ng-click="saveLocation(results)" class="waves-effect waves-light tooClose btn col s5 push-s1"><i class="material-icons center">queue</i></a>
+              <!-- <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">mode_edit</i></a> -->
+              <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s5 push-s1"><i class="material-icons center">my_location</i></a>
+              <a ng-show="!$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s5 push-s1"><i class="material-icons center">my_location</i></a>
             </div>
           </div>
         </div>

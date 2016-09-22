@@ -110,6 +110,20 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     });
   };
 
+  let getSingleLocation = (locationId) => {
+    console.log("fired get single loc call", locationId);
+    return $q( (resolve, reject) => {
+      $http.get(`${FBURL}locations/${locationId}.json`)
+      .success( (itemObject) => {
+        resolve(itemObject);
+        console.log("single object", itemObject);
+      })
+      .error( (error) => {
+        reject(error);
+      });
+    });
+  };
+
   let deleteLocation = (locationId) => {
     console.log("locationId", locationId);
     return $q( (resolve, reject) => {
@@ -140,5 +154,5 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     return  locations;
   };
 
-  return {convertLocation, getSearchObject, moreResults, postNewLocation, getMyLocations, deleteLocation, getUrl, getResults, getLat, getLng, getLocations};
+  return {convertLocation, getSearchObject, moreResults, postNewLocation, getMyLocations, getSingleLocation, deleteLocation, getUrl, getResults, getLat, getLng, getLocations};
 });
