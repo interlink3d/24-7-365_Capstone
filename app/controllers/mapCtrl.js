@@ -1,8 +1,8 @@
 "use strict";
 
-app.controller("mapCtrl", function($scope, $location, $window, $sce, $route, MapCalls){
+app.controller("mapCtrl", function($scope, $location, $window, $route, MapCalls){
 
-  // $scope.trustAsResourceUrl = $sce.trustAsResourceUrl;
+  $scope.isActive = (viewLocation) => viewLocation === $location.path();
 
   $scope.mySearchUrl = MapCalls.getUrl();
   $scope.resultsObject = MapCalls.getResults();
@@ -13,9 +13,14 @@ app.controller("mapCtrl", function($scope, $location, $window, $sce, $route, Map
 
   $scope.map = {
     center: { latitude: $scope.lat, longitude: $scope.lng },
-    zoom: 15 };
+    zoom: 13 };
 
   $scope.options = {scrollwheel: true};
+
+  $scope.displayItems = [
+      {url: "#/results", name: "results", showState: "!$parent.isLoggedIn"}
+  ];
+
 
   $scope.nextResults = function() {
     console.log("clicked more results");

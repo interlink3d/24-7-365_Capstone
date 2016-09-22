@@ -18,7 +18,7 @@
               <h6 class="col s10 valign-wrapper">{{location.vicinity}}</h6>
             </div>
             <div class="card-action">
-              <a ng-click="locationDelete()" class="waves-effect waves-light tooClose btn col s3 push-s1">Delete</a>
+              <a ng-click="locationDelete(location.id)" class="waves-effect waves-light tooClose btn col s3 push-s1">Delete</a>
               <a ng-click="writeReview()" class="waves-effect waves-light tooClose btn col s3 push-s1">Review</a>
               <a ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1">Directions</a>
             </div>

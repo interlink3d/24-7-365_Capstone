@@ -110,6 +110,16 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     });
   };
 
+  let deleteLocation = (locationId) => {
+    console.log("locationId", locationId);
+    return $q( (resolve, reject) => {
+      $http.delete(`${FBURL}locations/${locationId}.json`)
+      .success( (ObjFromFirebase) => {
+        resolve(ObjFromFirebase);
+      });
+     });
+  };
+
   let getUrl = () => {
     return searchURL;
   };
@@ -130,5 +140,5 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     return  locations;
   };
 
-  return {convertLocation, getSearchObject, moreResults, postNewLocation, getMyLocations, getUrl, getResults, getLat, getLng, getLocations};
+  return {convertLocation, getSearchObject, moreResults, postNewLocation, getMyLocations, deleteLocation, getUrl, getResults, getLat, getLng, getLocations};
 });
