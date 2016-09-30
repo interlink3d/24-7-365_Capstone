@@ -87,10 +87,11 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     });
   };
 
-  let updateLocation = (locationId) => {
-    console.log("locObject in PNL func", locationId);
+  let updateLocation = (locationId, location) => {
+    console.log("loc ID in edit", locationId);
+    console.log("locObject in edit", location);
     return $q( (resolve, reject) => {
-      $http.patch(`${FBURL}locations/${locationId}.json`, angular.toJson(locationId))
+      $http.patch(`${FBURL}locations/${locationId}.json`, angular.toJson(location))
       .success( (ObjFromFirebase) => {
         resolve(ObjFromFirebase);
       })
@@ -98,6 +99,16 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
         reject(error);
       });
     });
+  };
+
+  let deleteLocation = (locationId) => {
+    console.log("locationId", locationId);
+    return $q( (resolve, reject) => {
+      $http.delete(`${FBURL}locations/${locationId}.json`)
+      .success( (ObjFromFirebase) => {
+        resolve(ObjFromFirebase);
+      });
+     });
   };
 
   let getMyLocations = (user) => {
@@ -135,16 +146,6 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
         reject(error);
       });
     });
-  };
-
-  let deleteLocation = (locationId) => {
-    console.log("locationId", locationId);
-    return $q( (resolve, reject) => {
-      $http.delete(`${FBURL}locations/${locationId}.json`)
-      .success( (ObjFromFirebase) => {
-        resolve(ObjFromFirebase);
-      });
-     });
   };
 
   let getUrl = () => {

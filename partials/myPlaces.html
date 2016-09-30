@@ -9,22 +9,27 @@
   <div class="listResults row" ng-repeat="location in myLocations">
      <div class="row">
         <div class="col s12">
-          <div class="small card">
+          <div class="medium card">
             <div class="small card-image responsive-img">
               <img src="http://i.stack.imgur.com/58Fp8.png" class="responsive-img">
-              <span class="card-title bold h5 teal-text text-darken-2 center-align">{{location.name}}<br> {{location.rating}}<i class="material-icons center">star</i></span>
+              <div class="card-title bold h5 teal-text text-darken-2 col s12">
+                <p class="center-align center">{{location.name}} <br> {{location.rating}}<i class="material-icons center">star</i><br>{{location.vicinity}}</p>
+              </div>
             </div>
-            <div class="card-content center">
-              <h6 class="col s10 valign-wrapper">{{location.vicinity}}</h6>
-              <div><input type="text" name="notes" ng-model="location.review" ></div>
+            <div class="card-content">
+              <h6 class="col s12 center flow-text">Notes: {{location.review}}</h6>
             </div>
             <div class="card-action">
               <a ng-click="locationDelete(location.id)" class="waves-effect waves-light tooClose btn col s3 push-s1">Delete</a>
-              <a ng-click="writeNotes(location.id)" class="waves-effect waves-light tooClose btn col s3 push-s1">Save</a>
-              <a ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1">TakeMe</a>
-            </div>
+              <a ng-click="comments=true" class="waves-effect waves-light tooClose btn col s3 push-s1">Notes</a>
+              <a ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1">Drive</a>
+              <div class="row" ng-show="comments">
+                <input type="text" class="form-control" placeholder="Place your comments here" ng-model="location.review" />
+                <button class="btn" ng-click="writeNotes(location.id, location)">Save</button>
+              </div> <!-- end ng-show div -->
+            </div> <!-- end buttons div -->
           </div>
-        </div>
+        </div> <!-- end location card div -->
       </div>
   </div> <!-- end ng repeat div -->
 </div>
