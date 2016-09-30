@@ -22,21 +22,28 @@ app.controller("LocationsCtrl", function($scope, $route, $routeParams, $location
       });
   };
 
+  // $scope.writeNotes = (locationId) => {
+  //   console.log("clicked notes button", locationId);
+  //   MapCalls.getSingleLocation(locationId)
+  //   .then( (response) => {
+  //   loc = response;
+  //   console.log("loc", loc);
+  //   })
+  //   .then(function() {
+  //       $scope.eloc = loc;
+  //       console.log("scope.eloc", $scope.eloc);
+  //   })
+  //   .then(function() {
+  //       $location.url(`/myplaces/notes/${locationId}`);
+  //       console.log("scope.eloc", $scope.eloc);
+  //   });
+  // };
+
   $scope.writeNotes = (locationId) => {
-    console.log("clicked notes button", locationId);
-    MapCalls.getSingleLocation(locationId)
-    .then( (response) => {
-    loc = response;
-    console.log("loc", loc);
-    })
+    MapCalls.updateLocation($routeParams.locationId)
     .then(function() {
-        $scope.eloc = loc;
-        console.log("scope.eloc", $scope.eloc);
-    })
-    .then(function() {
-        $location.url(`/myplaces/notes/${locationId}`);
-        console.log("scope.eloc", $scope.eloc);
-    });
+        $route.reload();
+      });
   };
 
 

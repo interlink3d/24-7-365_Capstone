@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("NavCtrl", function($scope, $location, MapCalls){
+app.controller("NavCtrl", function($scope, $location, $routeParams, MapCalls){
 
     $scope.navItems = [
         {url: "#/login", name: "Login", showState: "!$parent.isLoggedIn"},
@@ -11,7 +11,8 @@ app.controller("NavCtrl", function($scope, $location, MapCalls){
     ];
 
   $scope.isActive = (viewLocation) => viewLocation === $location.path();
-
+  // $scope.userN = $routeParams.$scope.account;
+  console.log("userN", $scope.userN);
 
   $scope.locLoader = function(user) {
     user = $scope.$parent.getUser();

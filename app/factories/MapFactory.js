@@ -50,7 +50,7 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     })
     .then( (searchObject) => {
     mySearchResults = searchObject;
-    // console.log("promise to return object", mySearchResults);
+    console.log("promise to return object", mySearchResults);
     });
   };
 
@@ -78,6 +78,19 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     console.log("locObject in PNL func", locObject);
     return $q( (resolve, reject) => {
       $http.post(`${FBURL}locations.json`, angular.toJson(locObject))
+      .success( (ObjFromFirebase) => {
+        resolve(ObjFromFirebase);
+      })
+      .error( (error) => {
+        reject(error);
+      });
+    });
+  };
+
+  let updateLocation = (locationId) => {
+    console.log("locObject in PNL func", locationId);
+    return $q( (resolve, reject) => {
+      $http.patch(`${FBURL}locations/${locationId}.json`, angular.toJson(locationId))
       .success( (ObjFromFirebase) => {
         resolve(ObjFromFirebase);
       })
@@ -154,5 +167,5 @@ app.factory("MapCalls", ($q, $http, GMCreds, GMURL, FBURL) => {
     return  locations;
   };
 
-  return {convertLocation, getSearchObject, moreResults, postNewLocation, getMyLocations, getSingleLocation, deleteLocation, getUrl, getResults, getLat, getLng, getLocations};
+  return {convertLocation, getSearchObject, moreResults, postNewLocation, getMyLocations, getSingleLocation, updateLocation, deleteLocation, getUrl, getResults, getLat, getLng, getLocations};
 });

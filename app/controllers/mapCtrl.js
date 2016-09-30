@@ -15,6 +15,11 @@ app.controller("mapCtrl", function($scope, $location, $window, $route, MapCalls)
     center: { latitude: $scope.lat, longitude: $scope.lng },
     zoom: 13 };
 
+  $scope.marker = {
+  id: "1",
+  coords: {latitude: $scope.resultsObject.results[0].geometry.location.lat, longitude: $scope.resultsObject.results[0].geometry.location.lng}
+  };
+
   $scope.options = {scrollwheel: true};
 
   $scope.displayItems = [
