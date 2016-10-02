@@ -35,13 +35,17 @@ app.config(function($routeProvider){
       templateUrl: 'partials/searchForm.html',
       controller: 'SearchCtrl'
     }).
-    when('/home', {
+    when('/results', {
       templateUrl: 'partials/mapDisplay.html',
       controller: 'mapCtrl'
     }).
-    when('/home/moreresults', {
-      templateUrl: 'partials/mapDisplay.html',
-      controller: 'mapCtrl'
+    when('/myplaces', {
+      templateUrl: 'partials/myPlaces.html',
+      controller: 'LocationsCtrl'
+    }).
+    when('/myplaces/notes/:locationId', {
+      templateUrl: 'partials/editLocation.html',
+      controller: 'LocationsCtrl'
     }).
     when('/contact', {
       templateUrl: 'partials/contactPage.html',

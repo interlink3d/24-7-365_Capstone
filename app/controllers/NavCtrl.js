@@ -1,13 +1,26 @@
 "use strict";
 
-//2 PARAMETERS 1.NAME 2.FUNCTION WTIH SCOPE AS PARAM
-app.controller("NavCtrl", function($scope, $location){
+app.controller("NavCtrl", function($scope, $location, $routeParams, MapCalls){
+
     $scope.navItems = [
         {url: "#/login", name: "Login", showState: "!$parent.isLoggedIn"},
-        {url: "#/home", name: "Home", showState: "!$parent.isLoggedIn"},
-        {url: "#/contact", name: "contact", showState: "!$parent.isLoggedIn"}
-        // {url: "#/", name: "24/7/365", showState: "$parent.isLoggedIn"}
+        {url: "#/search", name: "Search", showState: "!$parent.isLoggedIn"},
+        {url: "#/results", name: "Home", showState: "!$parent.isLoggedIn"},
+        {url: "#/myplaces", name: "My Places", showState: "!$parent.isLoggedIn"},
+        {url: "#/contact", name: "Contact", showState: "!$parent.isLoggedIn"}
     ];
 
-    $scope.isActive = (viewLocation) => viewLocation === $location.path();
+  $scope.isActive = (viewLocation) => viewLocation === $location.path();
+  // $scope.userN = $routeParams.$scope.account;
+  console.log("userN", $scope.userN);
+
+  $scope.locLoader = function(user) {
+    user = $scope.$parent.getUser();
+    MapCalls.getMyLocations(user)
+    // console.log("user ID", user)
+      .then(function() {
+      $location.url("/myplaces");
+      });
+    };
+
 });

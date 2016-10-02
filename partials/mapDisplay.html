@@ -6,25 +6,30 @@
   </div>
   <br>
   <br>
-  <div class="col s12 angular-google-map-container">
-    <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'></ui-gmap-google-map>
+  <div class="col s10 push-s1 angular-google-map-container">
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
+      <ui-gmap-marker idkey="marker.id" coords= "marker.coords" ng-repeat="m in marker"></ui-gmap-marker>
+    </ui-gmap-google-map>
   </div>
   <div class="row">   </div>
-  <div class="listResults row" ng-repeat="results in searchArray">
+  <div class="row">   </div>
+  <div class="listResults container" ng-repeat="results in searchArray">
      <div class="row">
-        <div class="col s12">
+        <div class="col s10 push-s1">
           <div class="small card">
             <div class="small card-image responsive-img">
               <img src="http://i.stack.imgur.com/58Fp8.png" class="responsive-img">
-              <span class="card-title bold h5 teal-text text-darken-2 center">{{results.name}} - {{results.rating}}<i class="material-icons right">star</i></span>
+              <span class="card-title bold h5 teal-text text-darken-2 center-align">{{results.name}}<br> {{results.rating}}<i class="material-icons center">star</i></span>
             </div>
             <div class="card-content center">
-              <h6 class="col s10 valign-wrapper">{{results.vicinity}}</h6>
+              <h6 class="col s10 valign-wrapper center-align">{{results.vicinity}}</h6>
             </div>
             <div class="card-action">
-              <a ng-click="newCatSearch()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">queue</i></a>
-              <a ng-click="newCatSearch()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">mode_edit</i></a>
-              <a ng-click="newCatSearch()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">my_location</i></a>
+              <a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a>
+              <a ng-show="$parent.isLoggedIn" ng-click="saveLocation(results)" class="waves-effect waves-light tooClose btn col s5 push-s1"><i class="material-icons center">queue</i></a>
+              <!-- <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">mode_edit</i></a> -->
+              <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose center btn col s5 push-s1"><i class="material-icons center">my_location</i></a>
+              <a ng-show="!$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s5 push-s1"><i class="material-icons center">my_location</i></a>
             </div>
           </div>
         </div>
