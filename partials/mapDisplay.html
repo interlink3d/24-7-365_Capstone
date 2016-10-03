@@ -1,8 +1,8 @@
 <div ng-include="'partials/navBar.html'"></div>
 <div class="row">
   <br>
-  <div class="col s12 introMessage">
-    <p class="h6">This is going to be an intro message</p>
+  <div class="col s12 center introMessage">
+    <h4 class="white-text">YES! We're Open </h4>
   </div>
   <br>
   <br>
@@ -13,30 +13,27 @@
   </div>
   <div class="row">   </div>
   <div class="row">   </div>
-  <div class="listResults container" ng-repeat="results in searchArray">
+  <div class="container" ng-repeat="results in searchArray">
      <div class="row">
         <div class="col s10 push-s1">
-          <div class="small card">
+          <div class="small card listResults center">
             <div class="small card-image responsive-img">
-              <img src="http://i.stack.imgur.com/58Fp8.png" class="responsive-img">
-              <span class="card-title bold h5 teal-text text-darken-2 center-align">{{results.name}}<br> {{results.rating}}<i class="material-icons center">star</i></span>
-            </div>
-            <div class="card-content center">
-              <h6 class="col s10 valign-wrapper center-align">{{results.vicinity}}</h6>
+              <img src="/Pin.png" class="pinDrop">
+              <span class="card-title bold h5 center align-center white-text text-darken-2 flow-text">{{results.name}}<br> {{results.rating}}<i class="material-icons center">star</i><br>{{results.vicinity}}</span>
             </div>
             <div class="card-action">
               <a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a>
-              <a ng-show="$parent.isLoggedIn" ng-click="saveLocation(results)" class="waves-effect waves-light tooClose btn col s5 push-s1"><i class="material-icons center">queue</i></a>
+              <a ng-show="$parent.isLoggedIn" ng-click="saveLocation(results)" class="waves-effect waves-light tooClose btn light-blue darken-3 col s5 push-s1"><i class="material-icons center">queue</i></a>
               <!-- <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">mode_edit</i></a> -->
-              <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose center btn col s5 push-s1"><i class="material-icons center">my_location</i></a>
-              <a ng-show="!$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s5 push-s1"><i class="material-icons center">my_location</i></a>
+              <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose center btn light-blue darken-3 col s5 push-s1"><i class="material-icons center">my_location</i></a>
+              <a ng-show="!$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn light-blue darken-3 col s4 push-s4"><i class="material-icons center">my_location</i></a>
             </div>
           </div>
         </div>
       </div>
   </div> <!-- end ng repeat div -->
   <div class="row">
-    <a ng-click="nextResults()" class="waves-effect waves-light btn center col s6 push-s3">VIEW MORE RESULTS</a>
+    <a ng-click="nextResults()" class="waves-effect waves-light btn light-blue darken-3 center col s6 push-s3">VIEW MORE RESULTS</a>
   </div>
 </div>
 
