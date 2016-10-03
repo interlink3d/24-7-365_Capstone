@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("LocationsCtrl", function($scope, $route, $routeParams, $location, MapCalls) {
+app.controller("LocationsCtrl", function($scope, $route, $routeParams, $location, $window, MapCalls) {
 
   let user = $scope.$parent.getUser();
   $scope.myLocations = MapCalls.getLocations();
@@ -31,47 +31,9 @@ app.controller("LocationsCtrl", function($scope, $route, $routeParams, $location
       });
   };
 
-  // $scope.writeNotes = (locationId) => {
-  //   console.log("clicked notes button", locationId);
-  //   MapCalls.getSingleLocation(locationId)
-  //   .then( (response) => {
-  //   loc = response;
-  //   console.log("loc", loc);
-  //   })
-  //   .then(function() {
-  //       $scope.eloc = loc;
-  //       console.log("scope.eloc", $scope.eloc);
-  //   })
-  //   .then(function() {
-  //       $location.url(`/myplaces/notes/${locationId}`);
-  //       console.log("scope.eloc", $scope.eloc);
-  //   });
-  // };
-
-
-  // $scope.runVideoEdit = function(commentedVideo) {
-  //     let id = $routeParams.videoId;
-  //     console.log(commentedVideo)
-
-  //     // VideoFactory.editVideo($routeParams.videoId)
-  //     VideoFactory.editVideo(id, commentedVideo)
-  //         .then(() =>
-  //             console.log(commentedVideo)
-  //         )
-
-  //     //First subsequent function post-editItem-promise: console.log the edited item
-  //     .then(function() {
-  //             $location.url('/video');
-  //         })
-  //         .then(function() {
-  //             console.log(id)
-  //         })
-  //         //Second subsequent function post-editItem-promise: $location changes the url back kick to item/list view:
-
-
-  //     //NOTICE THAT TO CHAIN YOUR THENS YOU CAN'T USE A SEMI-COLON UNTIL THE VERY LAST ONE
-
-  // };
-
+  $scope.getDirections = function(location) {
+    console.log("location for directions", location);
+    $window.open('http://maps.google.com?daddr=' + location.latCoord + ',' + location.lngCoord);
+  };
 
 });

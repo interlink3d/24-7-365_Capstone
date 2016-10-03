@@ -25,8 +25,8 @@
               <a ng-show="{{item.showState}}" href="{{item.url}}">{{item.name}}</a>
               <a ng-show="$parent.isLoggedIn" ng-click="saveLocation(results)" class="waves-effect waves-light tooClose btn light-blue darken-3 col s5 push-s1"><i class="material-icons center">queue</i></a>
               <!-- <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn col s3 push-s1"><i class="material-icons center">mode_edit</i></a> -->
-              <a ng-show="$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose center btn light-blue darken-3 col s5 push-s1"><i class="material-icons center">my_location</i></a>
-              <a ng-show="!$parent.isLoggedIn" ng-click="getDirections()" class="waves-effect waves-light tooClose btn light-blue darken-3 col s4 push-s4"><i class="material-icons center">my_location</i></a>
+              <a ng-show="$parent.isLoggedIn" ng-click="getDirections(results)" class="waves-effect waves-light tooClose center btn light-blue darken-3 col s5 push-s1"><i class="material-icons center">my_location</i></a>
+              <a ng-show="!$parent.isLoggedIn" ng-click="getDirections(results)" class="waves-effect waves-light tooClose btn light-blue darken-3 col s4 push-s4"><i class="material-icons center">my_location</i></a>
             </div>
           </div>
         </div>
