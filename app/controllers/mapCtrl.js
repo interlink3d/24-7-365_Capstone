@@ -52,4 +52,9 @@ app.controller("mapCtrl", function($scope, $location, $window, $route, MapCalls)
     // console.log("locObject in SL", $scope.locObject);
   };
 
+  $scope.getDirections = function(results) {
+    console.log("location for directions", results);
+    $window.open('http://maps.google.com?daddr=' + results.geometry.location.lat + ',' + results.geometry.location.lng);
+  };
+
 });
